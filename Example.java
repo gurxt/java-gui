@@ -2,34 +2,41 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Example {
+    /* entry point for the application */
     public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        Example example = new Example();
-        example.setFrame(frame);
-    }
-
-    private void setFrame(JFrame _frame) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = (int) screenSize.getWidth();
-        int height = (int) screenSize.getHeight();
-        _frame.setSize(width, height);
-        _frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        _frame.setLayout(new FlowLayout(FlowLayout.CENTER));
-        _frame.setVisible(true);
-        _frame.getContentPane().setBackground(Color.BLACK);
+        SwingExample example = new SwingExample();
     }
 }
 
-/*
-public class Button {
-    JButton button = new JButton("hello");
-    public Button(JFrame _frame, int _idx) {
-        button.setBounds(130, 100 * (_idx + 1), 100, 40);
-        _frame.add(button);
+public class SwingExample extends JFrame {
+    /* image icon -- using more than once */
+    ImageIcon image = new ImageIcon("seelie.jpg"); 
+    /* constructor */
+    public SwingExample() {
+        /* set a label */
+        this.setLabel();
+        this.setFrame();
     }
-    
-    public JButton getButton() {
-        return button;
+
+    public void setFrame() {
+        /* JFrame = a GUI window */
+        this.setTitle("JFrame Example");
+        this.setSize(420,420);
+        this.setResizable(false);
+        this.setVisible(true);
+        this.getContentPane().setBackground(new Color(0x444444));
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        /* change image icon. */
+        this.setIconImage(image.getImage());
+    }
+
+    public void setLabel() {
+        JLabel label = new JLabel();
+        label.setIcon(image);
+        label.setText("Hello World.");
+        label.setForeground(new Color(0xFFFFFF));
+        label.setHorizontalTextPosition(JLabel.LEFT);
+        this.add(label);
     }
 }
-*/
+
